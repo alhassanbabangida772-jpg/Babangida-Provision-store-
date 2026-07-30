@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Babangida Provision Store</title>
+  <style>
+    /* Color Palette: Mainly Gold, Deep Purple, and Metallic Silver accents */
+    :root {
+      --gold-primary: #FFD700;
+      --gold-secondary: #D4AF37;
+      --purple-bg: #220038;
+      --purple-card: #380058;
+      --silver-accent: #E0E0E0;
+      --silver-border: #C0C0C0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle, #380058 0%, #170026 100%);
+      color: #FFFFFF;
+      min-height: 100vh;
+    }
+
+    /* Top Title Header */
+    header {
+      background: linear-gradient(180deg, #1d002e 0%, rgba(34, 0, 56, 0.95) 100%);
+      text-align: center;
+      padding: 40px 20px;
+      border-bottom: 3px solid var(--silver-accent);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3.2rem;
+      background: linear-gradient(135deg, #FFF099 0%, #FFD700 50%, #B8860B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 900;
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.8));
+    }
+
+    header p {
+      margin-top: 10px;
+      color: var(--silver-accent);
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* Digital Coupon Section */
+    .coupon-section {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(56, 0, 88, 0.8) 100%);
+      border: 2px dashed var(--gold-primary);
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      backdrop-filter: blur(5px);
+    }
+
+    .coupon-section h2 {
+      color: var(--gold-primary);
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+
+    .coupon-input-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .coupon-input-group input {
+      padding: 12px 18px;
+      font-size: 1rem;
+      border: 2px solid var(--silver-border);
+      border-radius: 8px;
+      outline: none;
+      text-transform: uppercase;
+      background-color: #FFFFFF;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .coupon-input-group button {
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+      color: #220038;
+      border: 1px solid var(--silver-accent);
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .coupon-input-group button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #FFF099 0%, #FFD700 100%);
+      box-shadow: 0 0 15px var(--gold-primary);
+    }
+
+    #couponMessage {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    /* Section Title */
+    .section-title {
+      color: var(--gold-primary);
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* Product Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+
+    .product-card {
+      background: linear-gradient(145deg, #420068 0%, #290042 100%);
+      border: 2px solid var(--silver-border);
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold-primary);
+      box-shadow: 0 12px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid var(--silver-accent);
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-card h3 {
+      color: var(--gold-primary);
+      margin: 0 0 10px 0;
+      font-size: 1.3rem;
+    }
+
+    .product-card p {
+      font-size: 0.95rem;
+      color: var(--silver-accent);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .product-card button {
+      background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+      color: #220038;
+      border: 1px solid var(--silver-accent);
+      padding: 12px 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .product-card button:hover {
+      background: linear-gradient(135deg, #FFF099 0%, #FFD700 100%);
+      box-shadow: 0 0 10px var(--gold-primary);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(180deg, #1d002e 0%, #11001c 100%);
+      border-top: 4px solid var(--gold-primary);
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    footer h3 {
+      color: var(--gold-primary);
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+    }
+
+    .contact-info {
+      font-size: 1.1rem;
+      line-height: 2;
+      color: var(--silver-accent);
+    }
+
+    .contact-info a {
+      color: var(--gold-primary);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    .contact-info a:hover {
+      color: #FFF099;
+      text-decoration: underline;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: linear-gradient(135deg, #25D366 0%, #1eb954 100%);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      border: 1px solid var(--silver-accent);
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Babangida Provision Store</h1>
+    <p>Premium Quality Foods, Beverages & Everyday Essentials</p>
+  </header>
+
+  <div class="container">
+
+    <div class="coupon-section">
+      <h2>🎟️ Redeem Digital Coupon</h2>
+      <p>Enter your promo code below to claim exclusive store discounts!</p>
+      <div class="coupon-input-group">
+        <input type="text" id="couponInput" placeholder="Try code: SAVE10 or ZARA20">
+        <button onclick="applyCoupon()">Apply Coupon</button>
+      </div>
+      <div id="couponMessage"></div>
+    </div>
+
+    <h2 class="section-title">Explore Provisions</h2>
+    
+    <div class="products-grid">
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80" alt="Food & Grains">
+        <div class="product-info">
+          <h3>Food & Grains</h3>
+          <p>Rice, Pasta, Sugar, Flour & Premium Oils</p>
+          <button onclick="orderItem('Food & Grains')">Order via WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1527960471264-932f39eb5846?auto=format&fit=crop&w=400&q=80" alt="Drinks & Beverages">
+        <div class="product-info">
+          <h3>Drinks & Beverages</h3>
+          <p>Tea, Coffee, Milk, Juices & Soft Drinks</p>
+          <button onclick="orderItem('Drinks & Beverages')">Order via WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=400&q=80" alt="Snacks & Sweets">
+        <div class="product-info">
+          <h3>Snacks & Sweets</h3>
+          <p>Biscuits, Chocolates, Crisps & Candies</p>
+          <button onclick="orderItem('Snacks & Sweets')">Order via WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80" alt="Toiletries & Household">
+        <div class="product-info">
+          <h3>Toiletries & Essentials</h3>
+          <p>Soaps, Detergents, Toothpaste & Cleaning</p>
+          <button onclick="orderItem('Toiletries & Essentials')">Order via WhatsApp</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <h3>Contact Us</h3>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:zarafatimaabuh@gmail.com">zarafatimaabuh@gmail.com</a></p>
+      <p><strong>Phone / WhatsApp:</strong> <a href="tel:08034649607">08034649607</a></p>
+    </div>
+    
+    <a class="whatsapp-btn" href="https://wa.me/2348034649607" target="_blank">
+      Chat on WhatsApp
+    </a>
+  </footer>
+
+  <script>
+    // Digital Coupon Logic
+    function applyCoupon() {
+      const code = document.getElementById('couponInput').value.trim().toUpperCase();
+      const messageDiv = document.getElementById('couponMessage');
+
+      if (code === 'SAVE10') {
+        messageDiv.style.color = '#FFD700';
+        messageDiv.innerHTML = '✅ Coupon Applied! You got 10% OFF your total order at Babangida Provision Store.';
+      } else if (code === 'ZARA20') {
+        messageDiv.style.color = '#FFD700';
+        messageDiv.innerHTML = '🎉 Coupon Applied! Special 20% Discount Activated!';
+      } else if (code === '') {
+        messageDiv.style.color = '#FF4D4D';
+        messageDiv.innerHTML = 'Please enter a coupon code first.';
+      } else {
+        messageDiv.style.color = '#FF4D4D';
+        messageDiv.innerHTML = '❌ Invalid Coupon Code. Try "SAVE10" or "ZARA20".';
+      }
+    }
+
+    // Direct WhatsApp Ordering
+    function orderItem(categoryName) {
+      const phone = "2348034649607";
+      const message = encodeURIComponent("Hello! I want to place an order for items from the category: " + categoryName + " at Babangida Provision Store.");
+      window.open("https://wa.me/" + phone + "?text=" + message, "_blank");
+    }
+  </script>
+
+</body>
+</html>
